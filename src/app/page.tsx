@@ -1,5 +1,6 @@
 import { ArchitectureSection } from '@/components/ArchitectureSection';
 import { ConnectorsSection } from '@/components/ConnectorsSection';
+import { CtaSection } from '@/components/CtaSection';
 import { Hero } from '@/components/Hero';
 import { NewsSection } from '@/components/NewsSection';
 import { PortfolioGrid } from '@/components/PortfolioGrid';
@@ -20,6 +21,7 @@ export default function Home() {
       <ConnectorsSection connectors={marvin.connectors} adminTools={marvin.adminTools} />
       <NewsSection news={marvin.news} />
       <PortfolioGrid portfolio={marvin.portfolio} />
+      <CtaSection />
       <SiteFooter />
     </main>
   );
