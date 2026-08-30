@@ -18,6 +18,18 @@ export interface TeamMember {
   reportsTo?: string;
   isNarrator?: boolean;
   retiredDate?: string;
+  tools?: string[];
+}
+
+export interface Routine {
+  name: string;
+  cadence: string;
+  description: string;
+}
+
+export interface ValueProp {
+  title: string;
+  description: string;
 }
 
 export interface Connector {
@@ -58,54 +70,74 @@ export const marvin = {
       role: 'Supervisor',
       description: 'Orchestrates rather than does the work — routes tasks to specialists and relays results back.',
       isNarrator: true,
+      tools: [
+        'Email',
+        'Calendar',
+        'Weather',
+        'Currency',
+        'EV charging lookup',
+        'Vehicle telematics',
+        'Smart home control',
+        'GitHub',
+        'Platform admin & scheduling',
+      ],
     },
     {
       name: 'Journal',
       role: 'Archivist',
       description: 'Daily and topic filing, archiving, flags notable moments for later review.',
+      tools: ['Local archiving only'],
     },
     {
       name: 'Researcher',
       role: 'Research',
       description: 'Web research with sourced findings, so nobody has to trust a hunch.',
+      tools: ['Web search', 'Web fetch'],
     },
     {
       name: 'Trip Control',
       role: 'Travel',
       description: 'Travel coordination, routing and local knowledge.',
       delegatesTo: ['a routing specialist', 'a local-knowledge specialist'],
+      tools: ['Vehicle telematics'],
     },
     {
       name: 'Route Scout',
       role: 'Routing',
       description: 'Route and charging-stop planning.',
       reportsTo: 'Trip Control',
+      tools: ['EV charging lookup', 'Mapping / geocoding', 'Vehicle telematics'],
     },
     {
       name: 'Local Guide',
       role: 'Local knowledge',
       description: 'Local knowledge and recommendations.',
       reportsTo: 'Trip Control',
+      tools: ['Web search', 'Local knowledge lookup'],
     },
     {
       name: 'Mr Manager',
       role: 'Briefing',
       description: 'Turns raw technical context into clean executive briefs.',
+      tools: ['Text-transformation only'],
     },
     {
       name: 'Mr White Hat',
       role: 'Security',
       description: 'Security architecture review — STRIDE threat modeling, assume-breach mindset.',
+      tools: ['Analysis only'],
     },
     {
       name: 'Mr Cloudspend',
       role: 'FinOps',
       description: 'Cloud cost analysis and sizing recommendations.',
+      tools: ['Analysis only'],
     },
     {
       name: 'mr-vibecoder',
       role: 'Coding',
       description: 'Coding delegate for personal software projects. That’s the one writing this page.',
+      tools: ['GitHub', 'Build / dev tooling'],
     },
     {
       name: 'Frontend Engineer',
@@ -117,6 +149,7 @@ export const marvin = {
       name: 'mr-devops',
       role: 'Infrastructure',
       description: 'Coding delegate for cloud infrastructure work (Azure/Terraform).',
+      tools: ['Cloud infrastructure tooling', 'GitHub'],
     },
     {
       name: 'family-planner',
@@ -126,6 +159,86 @@ export const marvin = {
       retiredDate: '2026-08-22',
     },
   ] satisfies TeamMember[],
+
+  routines: [
+    {
+      name: 'Daily briefing',
+      cadence: 'Daily',
+      description: 'Morning rundown of weather, calendar, and anything flagged overnight.',
+    },
+    {
+      name: 'Pre-departure traffic check',
+      cadence: 'Before travel days',
+      description:
+        'Script-gated live traffic check ahead of a travel day — only surfaces if there’s an actual delay worth knowing about.',
+    },
+    {
+      name: 'Podcast tracker',
+      cadence: 'Daily',
+      description: 'Checks for new episodes of a followed feed.',
+    },
+    {
+      name: 'Wiki lint',
+      cadence: 'Weekly',
+      description: 'Consistency pass over the internal knowledge base.',
+    },
+    {
+      name: 'Weekly memory review',
+      cadence: 'Weekly',
+      description: 'Promotes durable findings from short-term memory into the long-term knowledge base.',
+    },
+    {
+      name: 'End-of-day digest',
+      cadence: 'Daily',
+      description: 'Mechanical daily roundup — “nothing notable” is a valid entry.',
+    },
+    {
+      name: 'Nightly “dreaming” pass',
+      cadence: 'Nightly',
+      description:
+        'Quiet nightly consolidation and reflection over the day’s activity, surfaces anything worth remembering for the next morning’s briefing.',
+    },
+    {
+      name: 'Stale-approval watchdog',
+      cadence: 'Periodic',
+      description: 'Checks that pending approval requests haven’t gotten stuck unrouted.',
+    },
+    {
+      name: 'Connectivity watchdog',
+      cadence: 'Periodic',
+      description: 'Health check on external integrations, flags outages early.',
+    },
+  ] satisfies Routine[],
+
+  whyMe: [
+    {
+      title: 'Always-on and proactive',
+      description:
+        'Surfaces things — delays, outages, stuck approvals — before you’d think to ask, instead of only responding when prompted.',
+    },
+    {
+      title: 'Deep integration with your own accounts',
+      description: 'Reads real calendar, inbox, and smart-home state rather than working from whatever you paste in.',
+    },
+    {
+      title: 'Long-term memory that’s actually yours',
+      description: 'Persists across weeks and months instead of resetting every conversation.',
+    },
+    {
+      title: 'Specialist delegation',
+      description:
+        'A security reviewer, a FinOps analyst, and dedicated coding delegates on tap, each running with domain-appropriate depth instead of one generalist doing everything shallowly.',
+    },
+    {
+      title: 'Self-hosted and inspectable',
+      description: 'Runs on your own infrastructure — you can read, audit, and modify how it works instead of trusting a black box.',
+    },
+    {
+      title: 'Extends itself',
+      description:
+        'Can install new tools, wire up new integrations, or spin up new specialist agents on request, growing into new domains rather than staying fixed at ship time.',
+    },
+  ] satisfies ValueProp[],
 
   architecture: {
     flow: ['Messaging apps', 'Host router', 'Isolated agent container', 'Back out through the host'],

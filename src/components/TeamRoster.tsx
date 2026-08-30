@@ -46,10 +46,24 @@ export function TeamRoster({ team }: { team: TeamMember[] }) {
               {member.delegatesTo && (
                 <p className="mt-2 text-xs text-fg-dim/70">Delegates to {member.delegatesTo.join(' and ')}.</p>
               )}
+              {member.tools && !isRetired && (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {member.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded border border-line bg-void/40 px-2 py-0.5 text-[10px] uppercase tracking-wide text-fg-dim"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           );
         })}
       </div>
+
+      <p className="mt-6 text-xs text-fg-dim/50">Known integrations — not a guaranteed-complete list.</p>
     </section>
   );
 }

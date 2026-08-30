@@ -40,15 +40,14 @@ export function Hero({ marvin }: { marvin: Marvin }) {
         ))}
       </div>
 
-      <p className="absolute bottom-4 right-6 max-w-xs text-right text-[11px] leading-snug text-fg-dim/50 sm:right-10 lg:right-16">
-        Photo by Pavel Danilyuk:{' '}
+      <p className="absolute bottom-4 right-6 text-[11px] leading-snug text-fg-dim/50 sm:right-10 lg:right-16">
         <a
           href="https://www.pexels.com/photo/close-up-shot-of-white-toy-robot-on-blue-and-pink-background-8294661/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline decoration-fg-dim/30 underline-offset-2 hover:text-fg-dim/80"
         >
-          https://www.pexels.com/photo/close-up-shot-of-white-toy-robot-on-blue-and-pink-background-8294661/
+          Photo by Pavel Danilyuk
         </a>
       </p>
     </section>
