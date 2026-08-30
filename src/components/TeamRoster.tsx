@@ -10,23 +10,45 @@ export function TeamRoster({ team }: { team: TeamMember[] }) {
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map((member) => (
-          <div
-            key={member.name}
-            className={`rounded-lg border p-5 ${
-              member.isNarrator ? 'border-cyan-dim bg-cyan-dim/10' : 'border-line bg-panel'
-            }`}
-          >
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="font-display text-base font-medium">{member.name}</span>
-              <span className="font-display text-[10px] uppercase tracking-wide text-cyan">{member.role}</span>
+        {team.map((member) => {
+          const isRetired = Boolean(member.retiredDate);
+          return (
+            <div
+              key={member.name}
+              className={`rounded-lg border p-5 ${
+                isRetired
+                  ? 'border-dashed border-fg-dim/25 bg-panel/40 opacity-60'
+                  : member.isNarrator
+                    ? 'border-cyan-dim bg-cyan-dim/10'
+                    : member.reportsTo
+                      ? 'border-line border-l-2 border-l-cyan-dim bg-panel/70'
+                      : 'border-line bg-panel'
+              }`}
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <span className={`font-display text-base font-medium ${isRetired ? 'line-through decoration-fg-dim/40' : ''}`}>
+                  {member.name}
+                </span>
+                <span
+                  className={`font-display text-[10px] uppercase tracking-wide ${
+                    isRetired ? 'text-fg-dim/60' : 'text-cyan'
+                  }`}
+                >
+                  {isRetired ? `Retired ${member.retiredDate}` : member.role}
+                </span>
+              </div>
+              {member.reportsTo && !isRetired && (
+                <p className="mt-1 text-[11px] uppercase tracking-wide text-fg-dim/60">
+                  Reports to {member.reportsTo}
+                </p>
+              )}
+              <p className="mt-2 text-sm text-fg-dim">{member.description}</p>
+              {member.delegatesTo && (
+                <p className="mt-2 text-xs text-fg-dim/70">Delegates to {member.delegatesTo.join(' and ')}.</p>
+              )}
             </div>
-            <p className="mt-2 text-sm text-fg-dim">{member.description}</p>
-            {member.delegatesTo && (
-              <p className="mt-2 text-xs text-fg-dim/70">Delegates to {member.delegatesTo.join(' and ')}.</p>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

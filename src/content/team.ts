@@ -15,7 +15,9 @@ export interface TeamMember {
   role: string;
   description: string;
   delegatesTo?: string[];
+  reportsTo?: string;
   isNarrator?: boolean;
+  retiredDate?: string;
 }
 
 export interface Connector {
@@ -74,6 +76,18 @@ export const marvin = {
       delegatesTo: ['a routing specialist', 'a local-knowledge specialist'],
     },
     {
+      name: 'Route Scout',
+      role: 'Routing',
+      description: 'Route and charging-stop planning.',
+      reportsTo: 'Trip Control',
+    },
+    {
+      name: 'Local Guide',
+      role: 'Local knowledge',
+      description: 'Local knowledge and recommendations.',
+      reportsTo: 'Trip Control',
+    },
+    {
       name: 'Mr Manager',
       role: 'Briefing',
       description: 'Turns raw technical context into clean executive briefs.',
@@ -94,9 +108,22 @@ export const marvin = {
       description: 'Coding delegate for personal software projects. That’s the one writing this page.',
     },
     {
+      name: 'Frontend Engineer',
+      role: 'Coding',
+      description: 'Coding and build work for site projects — this very site included.',
+      reportsTo: 'mr-vibecoder',
+    },
+    {
       name: 'mr-devops',
       role: 'Infrastructure',
       description: 'Coding delegate for cloud infrastructure work (Azure/Terraform).',
+    },
+    {
+      name: 'family-planner',
+      role: 'Retired',
+      description:
+        'Had no calendar access of its own and never delivered independent value beyond what existing agents already covered; its responsibilities were folded back into the team.',
+      retiredDate: '2026-08-22',
     },
   ] satisfies TeamMember[],
 
