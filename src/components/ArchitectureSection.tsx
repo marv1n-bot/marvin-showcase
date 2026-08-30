@@ -3,7 +3,7 @@ import type { Marvin } from '@/content/team';
 export function ArchitectureSection({ architecture }: { architecture: Marvin['architecture'] }) {
   return (
     <section id="architecture" className="border-t border-line bg-panel/40 px-6 py-16 sm:px-10 lg:px-16">
-      <p className="font-display text-xs uppercase tracking-[0.4em] text-cyan">Under the hood</p>
+      <p className="font-display text-xs uppercase tracking-[0.4em] text-accent">Under the hood</p>
       <h2 className="mt-3 font-display text-2xl font-medium sm:text-3xl">Architecture</h2>
 
       <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-2">
@@ -13,7 +13,7 @@ export function ArchitectureSection({ architecture }: { architecture: Marvin['ar
               {step}
             </div>
             {index < architecture.flow.length - 1 && (
-              <span aria-hidden className="hidden font-display text-cyan sm:block">
+              <span aria-hidden className="hidden font-display text-accent sm:block">
                 →
               </span>
             )}
@@ -25,7 +25,7 @@ export function ArchitectureSection({ architecture }: { architecture: Marvin['ar
       <ul className="mt-8 max-w-2xl space-y-3">
         {architecture.points.map((point) => (
           <li key={point} className="flex gap-3 text-sm text-fg-dim sm:text-base">
-            <span aria-hidden className="mt-1 text-cyan">
+            <span aria-hidden className="mt-1 text-accent">
               ▸
             </span>
             <span>{point}</span>

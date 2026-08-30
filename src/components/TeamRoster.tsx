@@ -3,7 +3,7 @@ import type { TeamMember } from '@/content/team';
 export function TeamRoster({ team }: { team: TeamMember[] }) {
   return (
     <section id="team" className="border-t border-line px-6 py-16 sm:px-10 lg:px-16">
-      <p className="font-display text-xs uppercase tracking-[0.4em] text-cyan">The roster</p>
+      <p className="font-display text-xs uppercase tracking-[0.4em] text-accent">The roster</p>
       <h2 className="mt-3 font-display text-2xl font-medium sm:text-3xl">Capabilities</h2>
       <p className="mt-2 max-w-xl text-fg-dim">
         Marvin orchestrates rather than does the work — routes tasks to specialists and relays results back.
@@ -19,9 +19,9 @@ export function TeamRoster({ team }: { team: TeamMember[] }) {
                 isRetired
                   ? 'border-dashed border-fg-dim/25 bg-panel/40 opacity-60'
                   : member.isNarrator
-                    ? 'border-cyan-dim bg-cyan-dim/10'
+                    ? 'border-accent-dim bg-accent-dim/10'
                     : member.reportsTo
-                      ? 'border-line border-l-2 border-l-cyan-dim bg-panel/70'
+                      ? 'border-line border-l-2 border-l-accent-dim bg-panel/70'
                       : 'border-line bg-panel'
               }`}
             >
@@ -31,7 +31,7 @@ export function TeamRoster({ team }: { team: TeamMember[] }) {
                 </span>
                 <span
                   className={`font-display text-[10px] uppercase tracking-wide ${
-                    isRetired ? 'text-fg-dim/60' : 'text-cyan'
+                    isRetired ? 'text-fg-dim/60' : 'text-accent'
                   }`}
                 >
                   {isRetired ? `Retired ${member.retiredDate}` : member.role}
