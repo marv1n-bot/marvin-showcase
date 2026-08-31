@@ -21,7 +21,7 @@ export function CtaSection() {
         Get started at nanoclaw.dev →
       </a>
 
-      <p className="mt-8 text-sm text-fg-dim/70">Get to know your agent, and build from there...</p>
+      <p className="mt-8 text-sm text-fg-dim sm:text-base">Get to know your agent, and build from there...</p>
     </section>
   );
 }

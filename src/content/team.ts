@@ -42,6 +42,11 @@ export interface NewsItem {
   description: string;
 }
 
+export interface ChangelogItem {
+  title: string;
+  items: string[];
+}
+
 export interface PortfolioItem {
   name: string;
   description: string;
@@ -196,7 +201,7 @@ export const marvin = {
       name: 'Nightly “dreaming” pass',
       cadence: 'Nightly',
       description:
-        'Quiet nightly consolidation and reflection over the day’s activity, surfaces anything worth remembering for the next morning’s briefing.',
+        'Opens with a hindsight sweep — a sub-agent per ~24h-old conversation transcript catching nuggets same-day capture missed — then the usual consolidation and reflection, surfacing anything worth remembering for the next morning’s briefing.',
     },
     {
       name: 'Stale-approval watchdog',
@@ -285,6 +290,18 @@ export const marvin = {
       description: 'The team started keeping a living record of its own capabilities — the source document for this very page.',
     },
   ] satisfies NewsItem[],
+
+  changelog: [
+    {
+      title: 'Orchestration pattern upgrades (2026-08-31)',
+      items: [
+        'Evaluator-optimizer cross-check: substantive code changes from the coding agent now get a quick security pass from Mr White Hat before Marvin reports the work done.',
+        'Stale-approval auto-retry on the approval-card watchdog.',
+        'ReWOO-style upfront delegation batching on multi-agent turns, replacing sequential dispatch-wait-decide.',
+        'The one-time conversation-log backfill now feeds finds into the same nightly dreaming pipeline instead of a separate ingest path.',
+      ],
+    },
+  ] satisfies ChangelogItem[],
 
   portfolio: [
     {

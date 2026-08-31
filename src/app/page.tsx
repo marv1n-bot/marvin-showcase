@@ -1,4 +1,5 @@
 import { ArchitectureSection } from '@/components/ArchitectureSection';
+import { ChangelogSection } from '@/components/ChangelogSection';
 import { ConnectorsSection } from '@/components/ConnectorsSection';
 import { CtaSection } from '@/components/CtaSection';
 import { Hero } from '@/components/Hero';
@@ -18,6 +19,7 @@ export default function Home() {
       <TeamRoster team={marvin.team} />
       <RoutinesSection routines={marvin.routines} />
       <ArchitectureSection architecture={marvin.architecture} />
+      <ChangelogSection changelog={marvin.changelog} />
       <ConnectorsSection connectors={marvin.connectors} adminTools={marvin.adminTools} />
       <NewsSection news={marvin.news} />
       <PortfolioGrid portfolio={marvin.portfolio} />
