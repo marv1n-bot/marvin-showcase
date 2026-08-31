@@ -13,9 +13,10 @@ export function ChangelogSection({ changelog }: { changelog: ChangelogItem[] }) 
             <ul className="mt-3 space-y-2">
               {release.items.map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-fg-dim">
-                  <span aria-hidden className="mt-1 text-accent">
-                    ▸
-                  </span>
+                  <span
+                    aria-hidden
+                    className="mt-[7px] h-0 w-0 shrink-0 border-y-4 border-l-[6px] border-y-transparent border-l-accent"
+                  />
                   <span>{item}</span>
                 </li>
               ))}
