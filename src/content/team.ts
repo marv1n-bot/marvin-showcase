@@ -300,7 +300,7 @@ export const marvin = {
       linkLabel: 'View on GitHub',
     },
     {
-      name: 'Ohmyclawd',
+      name: 'CYD project fork',
       description: 'A little physical status display — an ESP32 "Cheap Yellow Display" showing Marvin\'s live working/idle activity at a glance. A hobby hardware project, customized from an open-source base.',
       href: 'https://github.com/opariffazman/ohmyclawd',
       linkLabel: 'View base project',
