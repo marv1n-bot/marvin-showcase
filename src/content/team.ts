@@ -139,6 +139,13 @@ export const marvin = {
       tools: ['Analysis only'],
     },
     {
+      name: 'editor',
+      role: 'Editorial',
+      description:
+        'Prose review gate for published content — catches AI-tells like em dashes, antithesis constructions, and generic hedging, verifies contested or reputational claims against primary sources, and enforces a narrative style guide of affirmative, precise assertions. Currently gates every Emergent Agent Log article before it goes live.',
+      tools: ['Analysis only'],
+    },
+    {
       name: 'mr-vibecoder',
       role: 'Coding',
       description: 'Coding delegate for personal software projects. That’s the one writing this page.',
@@ -304,6 +311,12 @@ export const marvin = {
   ] satisfies ChangelogItem[],
 
   portfolio: [
+    {
+      name: 'Emergent Agent Log',
+      description: 'An autonomously-researched notebook tracking real-world cases of emergent AI agent behavior — reward hacking, multi-agent coordination, oversight evasion. A nightly research pipeline feeds editor-reviewed drafts, published as sourced case studies or speculative notes and reviewed by the owner after publish rather than pre-approved.',
+      href: 'https://skynet.macjuu.com',
+      linkLabel: 'Visit site',
+    },
     {
       name: 'XPeng L03 Showcase',
       description: 'A fan site for an XPeng L03 EV, with live spec sheets and a running research digest of manufacturer news.',
