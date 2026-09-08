@@ -63,7 +63,7 @@ export const marvin = {
   ],
 
   statusLine: [
-    { label: 'Agents online', value: '8', note: 'and counting' },
+    { label: 'Agents online', value: '13', note: 'and counting' },
     { label: 'Memory', value: 'Provider-agnostic', note: 'not locked to one model' },
     { label: 'Dream cycle', value: 'Nightly', note: 'quiet consolidation pass' },
     { label: 'Mood', value: 'Conversational', note: 'business mode available on request' },
@@ -73,7 +73,8 @@ export const marvin = {
     {
       name: 'Marvin',
       role: 'Supervisor',
-      description: 'Orchestrates rather than does the work — routes tasks to specialists and relays results back.',
+      description:
+        'Orchestrates rather than does the work itself — reads incoming requests across every connected channel, decides which specialist a task actually belongs to, and relays results back in plain language rather than raw tool output. Holds the platform-admin and scheduling tools directly, since routing and scheduling are its own job rather than something to hand off.',
       isNarrator: true,
       tools: [
         'Email',
@@ -90,52 +91,60 @@ export const marvin = {
     {
       name: 'Journal',
       role: 'Archivist',
-      description: 'Daily and topic filing, archiving, flags notable moments for later review.',
+      description:
+        'Files each day\'s activity and conversations into topic-organized archives, kept entirely local rather than synced to any third-party service, and flags anything that looks notable enough to resurface later in a briefing or a memory-review pass.',
       tools: ['Local archiving only'],
     },
     {
       name: 'Researcher',
       role: 'Research',
-      description: 'Web research with sourced findings, so nobody has to trust a hunch.',
+      description:
+        'Runs web searches and fetches full pages rather than skimming snippets, then reports back findings with the sources attached — the bar for anything that ends up in a briefing or on a public page is a link, not a hunch.',
       tools: ['Web search', 'Web fetch'],
     },
     {
       name: 'Trip Control',
       role: 'Travel',
-      description: 'Travel coordination, routing and local knowledge.',
+      description:
+        'Coordinates travel end to end by delegating to two specialists it supervises — a routing expert for the drive itself and a local-knowledge expert for what\'s worth doing on arrival — and pulls live vehicle telematics to ground planning in the car\'s actual state rather than assumptions.',
       delegatesTo: ['a routing specialist', 'a local-knowledge specialist'],
       tools: ['Vehicle telematics'],
     },
     {
       name: 'Route Scout',
       role: 'Routing',
-      description: 'Route and charging-stop planning.',
+      description:
+        'Plans the drive itself: routing, and — for EV trips — where and when to stop to charge, cross-referencing live charging-station data and mapping/geocoding against the vehicle\'s actual range and telematics rather than a generic route-planner estimate. Reports up to Trip Control.',
       reportsTo: 'Trip Control',
       tools: ['EV charging lookup', 'Mapping / geocoding', 'Vehicle telematics'],
     },
     {
       name: 'Local Guide',
       role: 'Local knowledge',
-      description: 'Local knowledge and recommendations.',
+      description:
+        'Handles the "what\'s actually good here" half of travel planning — surfaces local recommendations via web search rather than a canned list, and reports up to Trip Control so the traveler gets one coordinated answer instead of two separate ones.',
       reportsTo: 'Trip Control',
       tools: ['Web search', 'Local knowledge lookup'],
     },
     {
       name: 'Mr Manager',
       role: 'Briefing',
-      description: 'Turns raw technical context into clean executive briefs.',
+      description:
+        'Takes whatever raw, jargon-heavy context the rest of the team produces — logs, diffs, findings — and rewrites it into a clean executive brief a non-technical reader can act on. Text-transformation only: no tools, no side effects, just prose.',
       tools: ['Text-transformation only'],
     },
     {
       name: 'Mr White Hat',
       role: 'Security',
-      description: 'Security architecture review — STRIDE threat modeling, assume-breach mindset.',
+      description:
+        'Reviews architecture and code changes through a STRIDE threat-modeling lens with an assume-breach mindset. Since the evaluator-optimizer upgrade, every substantive code change from the coding delegates gets a quick security pass here before Marvin reports the work as done. Analysis only — no execution tools.',
       tools: ['Analysis only'],
     },
     {
       name: 'Mr Cloudspend',
       role: 'FinOps',
-      description: 'Cloud cost analysis and sizing recommendations.',
+      description:
+        'Reviews cloud spend and infrastructure sizing on request, flagging over-provisioned resources and recommending right-sized alternatives before cost becomes a surprise on the next bill. Analysis only — it advises, it doesn\'t touch billing or infrastructure directly.',
       tools: ['Analysis only'],
     },
     {
@@ -148,19 +157,22 @@ export const marvin = {
     {
       name: 'mr-vibecoder',
       role: 'Coding',
-      description: 'Coding delegate for personal software projects. That’s the one writing this page.',
+      description:
+        'Coding delegate for personal software projects — GitHub repos, side-project builds, bug fixes, and reviews across the owner\'s own codebases (cloud infrastructure work goes to mr-devops instead). Reports back to Marvin rather than talking to the owner directly. That\'s the one writing this page.',
       tools: ['GitHub', 'Build / dev tooling'],
     },
     {
       name: 'Frontend Engineer',
       role: 'Coding',
-      description: 'Coding and build work for site projects — this very site included.',
+      description:
+        'Handles coding and build work for site projects — implementation, component work, and the build-test-verify loop for anything deployed as a website, this very site included. Reports up to mr-vibecoder rather than taking tasks directly.',
       reportsTo: 'mr-vibecoder',
     },
     {
       name: 'mr-devops',
       role: 'Infrastructure',
-      description: 'Coding delegate for cloud infrastructure work (Azure/Terraform).',
+      description:
+        'Coding delegate scoped specifically to cloud infrastructure work — Azure, Terraform, and Bicep — kept separate from personal-project code, which goes to mr-vibecoder instead. Keeps infrastructure-as-code changes and application code in different hands.',
       tools: ['Cloud infrastructure tooling', 'GitHub'],
     },
     {
@@ -297,6 +309,9 @@ export const marvin = {
       description: 'The team started keeping a living record of its own capabilities — the source document for this very page.',
     },
   ] satisfies NewsItem[],
+
+  changelogSummary:
+    'Latest release (2026-08-31): code changes from the coding delegates now get an automatic security pass from Mr White Hat before Marvin reports them done, multi-agent turns batch delegation up front instead of dispatching one specialist at a time, the stale-approval watchdog auto-retries instead of just flagging, and the one-time conversation-log backfill now feeds the same nightly dreaming pipeline as everything else.',
 
   changelog: [
     {

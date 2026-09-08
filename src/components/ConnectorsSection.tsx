@@ -1,6 +1,14 @@
 import type { Connector } from '@/content/team';
 
-export function ConnectorsSection({ connectors, adminTools }: { connectors: Connector[]; adminTools: string[] }) {
+export function ConnectorsSection({
+  connectors,
+  adminTools,
+  changelogSummary,
+}: {
+  connectors: Connector[];
+  adminTools: string[];
+  changelogSummary: string;
+}) {
   return (
     <section id="connectors" className="border-t border-line px-6 py-16 sm:px-10 lg:px-16">
       <p className="font-display text-xs uppercase tracking-[0.4em] text-accent">Reach</p>
@@ -30,6 +38,11 @@ export function ConnectorsSection({ connectors, adminTools }: { connectors: Conn
             </li>
           ))}
         </ul>
+      </div>
+
+      <div id="changelog" className="mt-10 rounded-lg border border-line bg-panel p-6">
+        <p className="font-display text-xs uppercase tracking-wide text-accent">Changelog</p>
+        <p className="mt-3 text-sm text-fg-dim">{changelogSummary}</p>
       </div>
     </section>
   );
