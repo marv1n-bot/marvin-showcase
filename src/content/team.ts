@@ -223,6 +223,12 @@ export const marvin = {
         'Opens with a hindsight sweep — a sub-agent per ~24h-old conversation transcript catching nuggets same-day capture missed — then the usual consolidation and reflection, surfacing anything worth remembering for the next morning’s briefing.',
     },
     {
+      name: 'Emergent Agent Log nightly pipeline',
+      cadence: 'Nightly',
+      description:
+        'Research → draft → editor gate → publish → deploy, deduplicating cases against a covered-list of already-logged incidents.',
+    },
+    {
       name: 'Stale-approval watchdog',
       cadence: 'Periodic',
       description: 'Checks that pending approval requests haven’t gotten stuck unrouted.',
@@ -311,9 +317,17 @@ export const marvin = {
   ] satisfies NewsItem[],
 
   changelogSummary:
-    'Latest release (2026-08-31): code changes from the coding delegates now get an automatic security pass from Mr White Hat before Marvin reports them done, multi-agent turns batch delegation up front instead of dispatching one specialist at a time, the stale-approval watchdog auto-retries instead of just flagging, and the one-time conversation-log backfill now feeds the same nightly dreaming pipeline as everything else.',
+    'Latest release (2026-09-16): every Emergent Agent Log article now passes a dedicated editor agent before publish, a GitHub push-based webhook replaced the poll-based repo-watch, and the nightly dreaming pass gained a hindsight sweep. Prior release (2026-08-31): code changes from the coding delegates now get an automatic security pass from Mr White Hat before Marvin reports them done, multi-agent turns batch delegation up front instead of dispatching one specialist at a time, the stale-approval watchdog auto-retries instead of just flagging, and the one-time conversation-log backfill now feeds the same nightly dreaming pipeline as everything else.',
 
   changelog: [
+    {
+      title: 'Editor gate, push webhook, hindsight sweep (2026-09-16)',
+      items: [
+        'Editor publication gate (2026-09-05): every Emergent Agent Log article now passes a dedicated editor agent for AI-tell and contested-claim review before publish.',
+        'GitHub push-based webhook replaced the poll-based repo-watch (2026-09-07).',
+        'Nightly dreaming pass gained a hindsight sweep: a sub-agent per ~24h-old conversation transcript catches nuggets same-day capture missed.',
+      ],
+    },
     {
       title: 'Orchestration pattern upgrades (2026-08-31)',
       items: [
@@ -328,7 +342,7 @@ export const marvin = {
   portfolio: [
     {
       name: 'Emergent Agent Log',
-      description: 'An autonomously-researched notebook tracking real-world cases of emergent AI agent behavior — reward hacking, multi-agent coordination, oversight evasion. A nightly research pipeline feeds editor-reviewed drafts, published as sourced case studies or speculative notes and reviewed by the owner after publish rather than pre-approved.',
+      description: 'An autonomously-researched notebook tracking real-world cases of emergent AI agent behavior — reward hacking, multi-agent coordination, oversight evasion. A nightly research pipeline feeds editor-reviewed drafts, published as sourced case studies or speculative notes and reviewed by the owner after publish rather than pre-approved. Now backed by a SQLite CMS REST API: the repo is code-only, and content is published through the API.',
       href: 'https://skynet.macjuu.com',
       linkLabel: 'Visit site',
     },
